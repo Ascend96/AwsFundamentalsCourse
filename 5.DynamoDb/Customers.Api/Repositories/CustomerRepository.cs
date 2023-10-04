@@ -54,7 +54,8 @@ public class CustomerRepository : ICustomerRepository
             return null;
         }
 
-        return JsonSerializer.Deserialize<CustomerDto>(Document.FromAttributeMap(response.Item).ToJson());
+        var itemAsDocument = Document.FromAttributeMap(response.Item);
+        return JsonSerializer.Deserialize<CustomerDto>(itemAsDocument.ToJson());
     }
 
     public async Task<IEnumerable<CustomerDto>> GetAllAsync()
@@ -64,11 +65,33 @@ public class CustomerRepository : ICustomerRepository
 
     public async Task<bool> UpdateAsync(CustomerDto customer)
     {
-        throw new NotImplementedException();
+        customer.UpdatedAt = DateTime.UtcNow;
+        var customerAsJson = JsonSerializer.Serialize(customer);
+        var customerAsAttributes = Document.FromJson(customerAsJson).ToAttributeMap();
+        
+        var updateItemRequest = new PutItemRequest()
+        {
+            TableName = _tableName,
+            Item = customerAsAttributes
+        };
+
+        var response = await _dynamoDb.PutItemAsync(updateItemRequest);
+        return response.HttpStatusCode == HttpStatusCode.OK;
     }
 
     public async Task<bool> DeleteAsync(Guid id)
     {
-        throw new NotImplementedException();
+        var deleteItemRequest = new DeleteItemRequest
+        {
+            TableName = _tableName,
+            Key = new Dictionary<string, AttributeValue>
+            {
+                { "pk", new AttributeValue { S = id.ToString() } },
+                { "sk", new AttributeValue { S = id.ToString() } }
+            }
+        };
+
+        var response = await _dynamoDb.DeleteItemAsync(deleteItemRequest);
+        return response.HttpStatusCode == HttpStatusCode.OK;
     }
 }
