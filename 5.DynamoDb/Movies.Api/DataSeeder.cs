@@ -26,7 +26,7 @@ public class DataSeeder
             var ageRestriction = int.Parse(commaSplit[2]);
             var rottenTomatoes = int.Parse(commaSplit[3]);
 
-            var movie = new Movie
+            var movie = new Movie1
             {
                 Id = Guid.NewGuid(),
                 Title = title,
