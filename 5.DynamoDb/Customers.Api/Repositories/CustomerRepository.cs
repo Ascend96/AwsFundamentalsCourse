@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System.IO.IsolatedStorage;
+using System.Net;
 using System.Text.Json;
 using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.DocumentModel;
@@ -26,7 +27,8 @@ public class CustomerRepository : ICustomerRepository
         var createItemRequest = new PutItemRequest()
         {
             TableName = _tableName,
-            Item = customerAsAttributes
+            Item = customerAsAttributes,
+            ConditionExpression = "attribute_not_exists(pk) and attribute_not_exists(sk)"
         };
 
         var response = await _dynamoDb.PutItemAsync(createItemRequest);
@@ -72,7 +74,7 @@ public class CustomerRepository : ICustomerRepository
         })!;
     }
 
-    public async Task<bool> UpdateAsync(CustomerDto customer)
+    public async Task<bool> UpdateAsync(CustomerDto customer, DateTime requestStarted)
     {
         customer.UpdatedAt = DateTime.UtcNow;
         var customerAsJson = JsonSerializer.Serialize(customer);
@@ -81,7 +83,12 @@ public class CustomerRepository : ICustomerRepository
         var updateItemRequest = new PutItemRequest()
         {
             TableName = _tableName,
-            Item = customerAsAttributes
+            Item = customerAsAttributes,
+            ConditionExpression = "UpdatedAt < :requestStarted",
+            ExpressionAttributeValues = new Dictionary<string, AttributeValue>
+            {
+                { ":requestStarted", new AttributeValue{S = requestStarted.ToString("O")} }
+            }
         };
 
         var response = await _dynamoDb.PutItemAsync(updateItemRequest);
