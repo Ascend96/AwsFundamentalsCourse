@@ -7,6 +7,38 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.DynamoDb", "5.DynamoDb", "{2C17779A-FD5B-4980-BEB0-4A19912178B7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6.S3", "6.S3", "{6CC73189-9356-4EE7-B061-73D9395C30AC}"
+	ProjectSection(SolutionItems) = preProject
+		6.S3\Customers.Api\appsettings.Development.json = 6.S3\Customers.Api\appsettings.Development.json
+		6.S3\Customers.Api\appsettings.json = 6.S3\Customers.Api\appsettings.json
+		6.S3\Customers.Api\Contracts\Data\CustomerDto.cs = 6.S3\Customers.Api\Contracts\Data\CustomerDto.cs
+		6.S3\Customers.Api\Contracts\Requests\CustomerRequest.cs = 6.S3\Customers.Api\Contracts\Requests\CustomerRequest.cs
+		6.S3\Customers.Api\Contracts\Requests\UpdateCustomerRequest.cs = 6.S3\Customers.Api\Contracts\Requests\UpdateCustomerRequest.cs
+		6.S3\Customers.Api\Contracts\Responses\CustomerResponse.cs = 6.S3\Customers.Api\Contracts\Responses\CustomerResponse.cs
+		6.S3\Customers.Api\Contracts\Responses\GetAllCustomersResponse.cs = 6.S3\Customers.Api\Contracts\Responses\GetAllCustomersResponse.cs
+		6.S3\Customers.Api\Controllers\CustomerController.cs = 6.S3\Customers.Api\Controllers\CustomerController.cs
+		6.S3\Customers.Api\Controllers\CustomerImageController.cs = 6.S3\Customers.Api\Controllers\CustomerImageController.cs
+		6.S3\Customers.Api\Controllers\FromMultiSourceAttribute.cs = 6.S3\Customers.Api\Controllers\FromMultiSourceAttribute.cs
+		6.S3\Customers.Api\Customers.Api.csproj = 6.S3\Customers.Api\Customers.Api.csproj
+		6.S3\Customers.Api\Domain\Customer.cs = 6.S3\Customers.Api\Domain\Customer.cs
+		6.S3\Customers.Api\Mapping\ApiContractToDomainMapper.cs = 6.S3\Customers.Api\Mapping\ApiContractToDomainMapper.cs
+		6.S3\Customers.Api\Mapping\DomainToApiContractMapper.cs = 6.S3\Customers.Api\Mapping\DomainToApiContractMapper.cs
+		6.S3\Customers.Api\Mapping\DomainToDtoMapper.cs = 6.S3\Customers.Api\Mapping\DomainToDtoMapper.cs
+		6.S3\Customers.Api\Mapping\DtoToDomainMapper.cs = 6.S3\Customers.Api\Mapping\DtoToDomainMapper.cs
+		6.S3\Customers.Api\Program.cs = 6.S3\Customers.Api\Program.cs
+		6.S3\Customers.Api\Properties\launchSettings.json = 6.S3\Customers.Api\Properties\launchSettings.json
+		6.S3\Customers.Api\Repositories\CustomerRepository.cs = 6.S3\Customers.Api\Repositories\CustomerRepository.cs
+		6.S3\Customers.Api\Repositories\ICustomerRepository.cs = 6.S3\Customers.Api\Repositories\ICustomerRepository.cs
+		6.S3\Customers.Api\Services\CustomerService.cs = 6.S3\Customers.Api\Services\CustomerService.cs
+		6.S3\Customers.Api\Services\GitHubService.cs = 6.S3\Customers.Api\Services\GitHubService.cs
+		6.S3\Customers.Api\Services\ICustomerService.cs = 6.S3\Customers.Api\Services\ICustomerService.cs
+		6.S3\Customers.Api\Services\IGitHubService.cs = 6.S3\Customers.Api\Services\IGitHubService.cs
+		6.S3\Customers.Api\Validation\CustomerRequestValidator.cs = 6.S3\Customers.Api\Validation\CustomerRequestValidator.cs
+		6.S3\Customers.Api\Validation\ValidationExceptionMiddleware.cs = 6.S3\Customers.Api\Validation\ValidationExceptionMiddleware.cs
+		6.S3\S3Playground\face.jpg = 6.S3\S3Playground\face.jpg
+		6.S3\S3Playground\movies.csv = 6.S3\S3Playground\movies.csv
+		6.S3\S3Playground\Program.cs = 6.S3\S3Playground\Program.cs
+		6.S3\S3Playground\S3Playground.csproj = 6.S3\S3Playground\S3Playground.csproj
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "7.SecretsManager", "7.SecretsManager", "{8D27D9CA-8D14-4CD6-9827-A0837CFB03C3}"
 EndProject
